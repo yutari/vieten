@@ -1,0 +1,15 @@
+{
+    "id": "b7d0325e-9837-46da-9032-5e9837f6da15",
+    "name": "tesstttt",
+    "type": "SWAGGER",
+    "order": 1,
+    "updated_at": "2024-08-14T11:11:21.359Z",
+    "configuration": {
+        "viewer": "Redoc"
+    },
+    "_links": {
+        "self": "http://10.60.158.47:8083/portal/environments/DEFAULT/apis/7904d1a3-9e21-47a2-84d1-a39e21e7a27e/pages/b7d0325e-9837-46da-9032-5e9837f6da15",
+        "content": "http://10.60.158.47:8083/portal/environments/DEFAULT/apis/7904d1a3-9e21-47a2-84d1-a39e21e7a27e/pages/b7d0325e-9837-46da-9032-5e9837f6da15/content",
+        "parent": "http://10.60.158.47:8083/portal/environments/DEFAULT/apis/7904d1a3-9e21-47a2-84d1-a39e21e7a27e/pages"
+    }
+}

@@ -74,3 +74,4 @@ components:
           reason:
             type: string
             description: The reason for deleting the user.
+

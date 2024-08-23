@@ -1,5 +1,5 @@
 = API Documentation
-John Doe <john.doe@example.com>
+Hoang <hoang.hoang@gmail.com>
 v1.0, 2024-08-23
 
 == Giới thiệu

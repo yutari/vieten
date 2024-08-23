@@ -1,41 +1,76 @@
-asyncapi: 3.0.0
+asyncapi: '2.0.0'
 info:
-  title: Streetlights App
+  title: Simple Messaging API
   version: '1.0.0'
   description: |
-    The Smartylighting Streetlights application allows you
-    to remotely manage the city lights.
+    This is a simple AsyncAPI document example for a messaging system.
+    The API uses MQTT for communication.
   license:
     name: Apache 2.0
-    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
 servers:
-  mosquitto:
-    host: test.mosquitto.org
+  production:
+    url: mqtt://broker.emqx.io:1883
     protocol: mqtt
+    description: MQTT broker for production.
+
 channels:
-  lightMeasured:
-    address: 'light/measured'
-    messages:
-      lightMeasuredMessage:
-        name: LightMeasured
+  user/signedup:
+    description: Channel for user signup events.
+    subscribe:
+      summary: Receive events when a user signs up.
+      operationId: receiveUserSignup
+      message:
+        contentType: application/json
         payload:
           type: object
           properties:
-            id:
-              type: integer
-              minimum: 0
-              description: ID of the streetlight.
-            lumens:
-              type: integer
-              minimum: 0
-              description: Light intensity measured in lumens.
-            sentAt:
+            userId:
               type: string
-              format: date-time
-              description: Date and time when the message was sent.
-operations:
-  onLightMeasured:
-    action: 'receive'
-    summary: Information about environmental lighting conditions for a particular streetlight.
-    channel:
-      $ref: '#/channels/lightMeasured'
+              description: The unique identifier of the signed-up user.
+            email:
+              type: string
+              description: The email of the signed-up user.
+
+  user/deleted:
+    description: Channel for user deletion events.
+    publish:
+      summary: Send events when a user is deleted.
+      operationId: sendUserDeletion
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            userId:
+              type: string
+              description: The unique identifier of the deleted user.
+            reason:
+              type: string
+              description: The reason for deleting the user.
+
+components:
+  messages:
+    UserSignedUpEvent:
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          userId:
+            type: string
+            description: The unique identifier of the signed-up user.
+          email:
+            type: string
+            description: The email of the signed-up user.
+    UserDeletedEvent:
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          userId:
+            type: string
+            description: The unique identifier of the deleted user.
+          reason:
+            type: string
+            description: The reason for deleting the user.

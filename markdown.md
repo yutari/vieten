@@ -1,39 +1,36 @@
- Giới thiệu về API
+# API Documentation
 
-## 1. Tổng quan
+**Tác giả:** Hoang 
+**Phiên bản:** 1.0  
+**Ngày:** 2024-08-23  
 
-API (Application Programming Interface) là một tập hợp các quy tắc và giao thức cho phép các ứng dụng giao tiếp với nhau. API cung cấp các phương thức để truy cập các chức năng và dữ liệu của một ứng dụng, giúp phát triển và tích hợp các dịch vụ dễ dàng hơn.
+## Giới thiệu
 
-## 2. Các loại API
+Đây là tài liệu giới thiệu API cho dịch vụ XYZ. API này cho phép bạn thực hiện các thao tác CRUD cho các tài nguyên.
 
-- **RESTful API**: Sử dụng giao thức HTTP và các phương thức (GET, POST, PUT, DELETE) để truy cập và quản lý tài nguyên.
-- **SOAP API**: Sử dụng giao thức XML để truyền tải dữ liệu và yêu cầu.
-- **GraphQL**: Cho phép client xác định cấu trúc dữ liệu mà họ cần, giảm thiểu việc truyền tải dữ liệu không cần thiết.
+## Tóm tắt API
 
-## 3. Tại sao sử dụng API?
+API này cung cấp các phương thức sau:
 
-- **Tăng cường khả năng tích hợp**: API cho phép các ứng dụng khác nhau kết nối và chia sẻ dữ liệu.
-- **Tính mở rộng**: Các nhà phát triển có thể dễ dàng tích hợp các dịch vụ bên ngoài mà không cần phải viết lại mã.
-- **Tăng cường trải nghiệm người dùng**: API cho phép tích hợp các tính năng và dịch vụ mới, cải thiện trải nghiệm người dùng.
+### 1. Lấy danh sách tài nguyên
 
-## 4. Cấu trúc API
+- **Phương thức:** GET  
+- **URL:** /api/resources  
+- **Mô tả:** Lấy danh sách tất cả tài nguyên.
 
-Dưới đây là một ví dụ về cấu trúc một API đơn giản:
+### 2. Tạo tài nguyên mới
 
-### Endpoint
+- **Phương thức:** POST  
+- **URL:** /api/resources  
+- **Mô tả:** Tạo một tài nguyên mới với dữ liệu được gửi.
 
-- **URL**: `https://api.example.com/v1/users`
+## Ví dụ
 
-### Phương thức HTTP
+### Ví dụ: Gửi yêu cầu tạo tài nguyên
 
-- **GET**: Lấy danh sách người dùng.
-- **POST**: Tạo người dùng mới.
+```json
+{
+  "name": "New Resource",
+  "description": "This is a new resource."
+}
 
-### Yêu cầu mẫu
-
-#### GET /users
-
-```http
-GET /v1/users HTTP/1.1
-Host: api.example.com
-Authorization: Bearer YOUR_ACCESS_TOKEN

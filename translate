@@ -26,3 +26,17 @@ graviteeManagementModule.controller('LanguageController', ['$scope', '$translate
     };
 }]);
 
+<md-toolbar class="topnavbar" id="gv-navbar" layout="row" layout-align="left center" gv-theme-element="portal.navbar" ng-if="$ctrl.visible">
+  <div class="topnavbar-brand navigation-header">
+    <a ui-sref="management.dashboard.home" style="text-decoration: none">
+      <img ng-src="{{$ctrl.getLogo()}}" alt="logo" />
+    </a>
+    <md-button ng-if="$ctrl.portalURL" class="gv-navbar-link" ng-href="{{$ctrl.portalURL}}" target="_blank">{{'navbar.developers' | translate}}</md-button>
+  </div>
+  <span flex></span>
+  <mat-form-field style="color: #000;">
+    <select ng-model="currentLanguage" ng-change="changelanguage(currentLanguage)" matNativeControl required>
+      <option value="en">English</option>
+      <option value="vi">Tiếng Việt</option>
+    </select>
+  </mat-form-field>

@@ -1,0 +1,100 @@
+import { StateService } from '@uirouter/core';
+import { IIntervalService, IScope } from 'angular';
+
+import { PagedResult } from '../../entities/pagedResult';
+import AuthenticationService from '../../services/authentication.service';
+import OrganizationService from '../../services/organization.service';
+import TaskService from '../../services/task.service';
+import UserService from '../../services/user.service';
+import UserNotificationService from '../../services/userNotification.service';
+import { Constants } from '../../entities/Constants';
+
+export const NavbarComponent: ng.IComponentOptions = {
+  template: require('./navbar.html'),
+  controller: function (
+    UserService: UserService,
+    TaskService: TaskService,
+    UserNotificationService: UserNotificationService,
+    OrganizationService: OrganizationService,
+    $scope: IScope,
+    Constants: Constants,
+    $rootScope: IScope,
+    $state: StateService,
+    $transitions,
+    $interval: IIntervalService,
+    AuthenticationService: AuthenticationService,
+    $window,
+  ) {
+    'ngInject';
+
+    this.refreshUser = (user) => {
+      this.newsletterProposed =
+        (user && !user.firstLogin) || !!$window.localStorage.getItem('newsletterProposed') || !Constants.org.settings.newsletter.enabled;
+    };
+
+    this.$state = $state;
+    this.tasksScheduler = null;
+    this.$rootScope = $rootScope;
+    this.displayContextualDocumentationButton = false;
+    this.visible = true;
+    this.localLoginDisabled = !Constants.org.settings.authentication.localLogin.enabled || false;
+    this.refreshUser(UserService.currentUser);
+
+    $scope.$on('graviteePortalUrlRefresh', (event, portalURL) => {
+      this.portalURL = portalURL;
+    });
+
+    $scope.$on('graviteeUserRefresh', (event, { user, refresh }) => {
+      if (refresh) {
+        UserService.current()
+          .then((user) => {
+            this.startTasks(user);
+            this.refreshUser(user);
+          })
+          .catch(() => delete this.graviteeUser);
+      } else if (user && user.authenticated) {
+        this.startTasks(user);
+        this.refreshUser(user);
+      } else {
+        delete this.graviteeUser;
+      }
+    });
+
+    this.startTasks = (user) => {
+      if (user.authenticated) {
+        this.graviteeUser = user;
+        // schedule an automatic refresh of the user tasks
+        if (!this.tasksScheduler) {
+          this.refreshUserTasks();
+          this.tasksScheduler = $interval(() => {
+            this.refreshUserTasks();
+          }, TaskService.getTaskSchedulerInSeconds() * 1000);
+        }
+      }
+    };
+
+    $scope.$on('graviteeUserTaskRefresh', () => {
+      this.refreshUserTasks();
+    });
+
+    $scope.$on('graviteeUserCancelScheduledServices', () => {
+      this.cancelRefreshUserTasks();
+    });
+
+    $transitions.onFinish({}, (trans) => {
+      this.displayContextualDocumentationButton =
+        !trans.to().name.startsWith('portal') &&
+        !trans.to().name.startsWith('support') &&
+        !trans.to().name.startsWith('login') &&
+        !trans.to().name.startsWith('registration') &&
+        !trans.to().name.startsWith('confirm') &&
+        !trans.to().name.startsWith('user');
+
+      this.visible = trans.to().name !== 'login' && trans.to().name !== 'registration' && trans.to().name !== 'confirm';
+    });
+
+    this.$onInit = () => {
+      this.supportEnabled = Constants.org.settings.management.support.enabled;
+      $scope.$emit('graviteeUserRefresh', { user: undefined, refresh: true });
+      this.portalURL = Constants.env.settings ? Constants.env.settings.portal.url : undefined;
+    };

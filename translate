@@ -15,16 +15,18 @@ graviteeManagementModule.config(['$translateProvider', '$translateSanitizationPr
   $translateSanitizationProvider.useStrategy('sanitizeParameters');
 }]);
 
-graviteeManagementModule.controller('LanguageController', ['$scope', '$translate', function($scope, $translate) {
-    // Thiết lập ngôn ngữ hiện tại
-    $scope.currentLanguage = $translate.use();
+// Cập nhật trong controller của module management
+angular.module('management')
+.controller('ManagementController', ['$scope', 'LanguageService', function($scope, LanguageService) {
+    $scope.currentLanguage = LanguageService.getCurrentLanguage(); // Lấy ngôn ngữ hiện tại
 
-    // Hàm thay đổi ngôn ngữ
-    $scope.changeLanguage = function(langKey) {
-        $translate.use(langKey);  // Cập nhật ngôn ngữ trong ứng dụng
-        $scope.currentLanguage = langKey;  // Cập nhật ngôn ngữ hiện tại trong scope
-    };
+    // Lắng nghe sự kiện ngôn ngữ thay đổi
+    $scope.$on('languageChanged', function(event, langKey) {
+        console.log('Language changed to:', langKey);
+        $scope.currentLanguage = langKey; // Cập nhật ngôn ngữ trong controller nếu cần
+    });
 }]);
+
 
 <md-toolbar class="topnavbar" id="gv-navbar" layout="row" layout-align="left center" gv-theme-element="portal.navbar" ng-if="$ctrl.visible">
   <div class="topnavbar-brand navigation-header">
@@ -35,8 +37,39 @@ graviteeManagementModule.controller('LanguageController', ['$scope', '$translate
   </div>
   <span flex></span>
   <mat-form-field style="color: #000;">
-    <select ng-model="currentLanguage" ng-change="changelanguage(currentLanguage)" matNativeControl required>
+    <select ng-model="vm.currentLanguage" ng-change="vm.changeLanguage(vm.currentLanguage)" matNativeControl required>
       <option value="en">English</option>
       <option value="vi">Tiếng Việt</option>
     </select>
   </mat-form-field>
+</md-toolbar>
+
+
+// Đặt đoạn mã này vào trong file management.module.ajs.ts
+angular.module('gravitee-management')
+.service('LanguageService', ['$translate', function($translate) {
+    var currentLanguage = $translate.use(); // Ngôn ngữ hiện tại
+
+    this.getCurrentLanguage = function() {
+        return currentLanguage;
+    };
+
+    this.changeLanguage = function(langKey) {
+        currentLanguage = langKey;
+        $translate.use(langKey); // Thay đổi ngôn ngữ
+    };
+}]);
+
+// Cập nhật trong navbar.controller.js (hoặc thêm logic vào controller trong navbar)
+angular.module('gravitee-management')
+.controller('NavbarController', ['$scope', 'LanguageService', function($scope, LanguageService) {
+    var vm = this;
+    vm.currentLanguage = LanguageService.getCurrentLanguage(); // Lấy ngôn ngữ hiện tại
+
+    // Hàm thay đổi ngôn ngữ
+    vm.changeLanguage = function(langKey) {
+        LanguageService.changeLanguage(langKey); // Cập nhật ngôn ngữ qua dịch vụ
+        vm.currentLanguage = langKey; // Cập nhật ngôn ngữ trong controller
+        $scope.$emit('languageChanged', langKey); // Phát sự kiện nếu cần
+    };
+}]);

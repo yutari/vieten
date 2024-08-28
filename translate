@@ -14,3 +14,15 @@ graviteeManagementModule.config(['$translateProvider', '$translateSanitizationPr
   // Cấu hình chiến lược làm sạch dữ liệu
   $translateSanitizationProvider.useStrategy('sanitizeParameters');
 }]);
+
+graviteeManagementModule.controller('LanguageController', ['$scope', '$translate', function($scope, $translate) {
+    // Thiết lập ngôn ngữ hiện tại
+    $scope.currentLanguage = $translate.use();
+
+    // Hàm thay đổi ngôn ngữ
+    $scope.changeLanguage = function(langKey) {
+        $translate.use(langKey);  // Cập nhật ngôn ngữ trong ứng dụng
+        $scope.currentLanguage = langKey;  // Cập nhật ngôn ngữ hiện tại trong scope
+    };
+}]);
+

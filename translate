@@ -1,0 +1,16 @@
+const graviteeManagementModule = angular.module('gravitee-management');
+
+graviteeManagementModule.config(['$translateProvider', '$translateSanitizationProvider', function ($translateProvider, $translateSanitizationProvider) {
+  // Cấu hình loader để tải các tệp ngôn ngữ từ thư mục tĩnh
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'assets/i18n/',
+    suffix: '.json'
+  });
+
+  // Cấu hình các ngôn ngữ có sẵn
+  $translateProvider.preferredLanguage('vi');
+  $translateProvider.fallbackLanguage('vi');
+
+  // Cấu hình chiến lược làm sạch dữ liệu
+  $translateSanitizationProvider.useStrategy('sanitizeParameters');
+}]);

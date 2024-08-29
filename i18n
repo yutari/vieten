@@ -1,0 +1,12 @@
+"trigger-window": {
+    "duration-require": "Duration is required.",
+    "duration-must-higher-than-0": "Duration must be higher than 0."
+  },
+  "trigger-timeframe": {
+    "timeframe": "Timeframe",
+    "timeframe-when-noti-be-send": "Timeframe when notifications should be sent",
+    "add-timeframe": "Add a timeframe"
+  },
+  "trigger-node-lifecycle-changed": {
+    "rule-not-require-config": "This rule does not require any configuration."
+  },

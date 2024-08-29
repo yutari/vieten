@@ -1,0 +1,12 @@
+[$injector:unpr] Unknown provider: TranslationServiceProvider <- TranslationService
+https://errors.angularjs.org/1.8.2/$injector/unpr?p0=TranslationServiceProvider%20%3C-%20TranslationService
+    at angular.js:138:1
+    at angular.js:4991:1
+    at Object.getService [as get] (angular.js:5151:1)
+    at angular.js:4996:1
+    at getService (angular.js:5151:1)
+    at injectionArgs (angular.js:5176:1)
+    at Object.invoke (angular.js:5200:1)
+    at $controllerInit (angular.js:11814:1)
+    at nodeLinkFn (angular.js:10627:1)
+    at compositeLinkFn (angular.js:9942:1)

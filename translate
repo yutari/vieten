@@ -1,3 +1,1 @@
-getTranslation(key: string):string {
-    return this.translationService.translate(key);
-  }
+TranslationService is not using explicit annotation and cannot be invoked in strict mode

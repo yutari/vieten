@@ -1,1 +1,3 @@
-TranslationService is not using explicit annotation and cannot be invoked in strict mode
+graviteeManagementModule.service('TranslationService',function(){
+  this.changeLang = function(langKey) {}
+})

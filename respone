@@ -1,28 +1,26 @@
-{
-    "id": "b7d0325e-9837-46da-9032-5e9837f6da15",
-    "name": "tesstttt",
-    "type": "SWAGGER",
-    "order": 1,
-    "updated_at": "2024-08-14T11:11:21.359Z",
-    "configuration": {
-        "viewer": "Redoc"
-    },
-    "_links": {
-        "self": "http://10.60.158.47:8083/portal/environments/DEFAULT/apis/7904d1a3-9e21-47a2-84d1-a39e21e7a27e/pages/b7d0325e-9837-46da-9032-5e9837f6da15",
-        "content": "http://10.60.158.47:8083/portal/environments/DEFAULT/apis/7904d1a3-9e21-47a2-84d1-a39e21e7a27e/pages/b7d0325e-9837-46da-9032-5e9837f6da15/content",
-        "parent": "http://10.60.158.47:8083/portal/environments/DEFAULT/apis/7904d1a3-9e21-47a2-84d1-a39e21e7a27e/pages"
-    }
-}
+PS D:\Code\rielprojects\graviti2\api-management-console-webui> npm run serve
 
-export class TreeItem {
-  name: string;
-  value: any;
-  children: Array<any>;
-  expanded: boolean;
-  constructor(name, value, children) {
-    this.name = name;
-    this.value = value;
-    this.children = children;
-    this.expanded = false;
-  }
+> gravitee-apim-console-webui@3.18.9 serve
+> webpack serve -c ./conf/webpack.conf.js --progress --hot --port=8082
+
+<i> [webpack-dev-server] [HPM] Proxy created: /management  -> http://10.60.158.47:8083
+10% building 1/1 modules 0 activeD:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-dev-server\lib\Server.js:2434
+        throw error;
+        ^
+
+Error: listen EADDRINUSE: address already in use :::8082
+    at Server.setupListenHandle [as _listen2] (node:net:1319:16)
+    at listenInCluster (node:net:1367:12)
+    at Server.listen (node:net:1454:7)
+    at READ_WRITE (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-dev-server\lib\Server.js:3215:23)     
+    at new Promise (<anonymous>)
+    at Server.start (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-dev-server\lib\Server.js:3213:7)    
+    at async Command.<anonymous> (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-cli\node_modules\@webpack-cli\serve\lib\index.js:257:25)
+    at async Promise.all (index 1)
+    at async Command.<anonymous> (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-cli\lib\webpack-cli.js:1372:13) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8082
 }

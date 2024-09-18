@@ -1,26 +1,114 @@
-PS D:\Code\rielprojects\graviti2\api-management-console-webui> npm run serve
+1 ERROR in child compilations (Use 'stats.children: true' resp. '--stats-children' for more details)
 
-> gravitee-apim-console-webui@3.18.9 serve
-> webpack serve -c ./conf/webpack.conf.js --progress --hot --port=8082
+4 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
 
-<i> [webpack-dev-server] [HPM] Proxy created: /management  -> http://10.60.158.47:8083
-10% building 1/1 modules 0 activeD:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-dev-server\lib\Server.js:2434
-        throw error;
-        ^
+webpack 5.94.0 compiled with 25 errors in 96840 ms
 
-Error: listen EADDRINUSE: address already in use :::8082
-    at Server.setupListenHandle [as _listen2] (node:net:1319:16)
-    at listenInCluster (node:net:1367:12)
-    at Server.listen (node:net:1454:7)
-    at READ_WRITE (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-dev-server\lib\Server.js:3215:23)     
-    at new Promise (<anonymous>)
-    at Server.start (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-dev-server\lib\Server.js:3213:7)    
-    at async Command.<anonymous> (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-cli\node_modules\@webpack-cli\serve\lib\index.js:257:25)
-    at async Promise.all (index 1)
-    at async Command.<anonymous> (D:\Code\rielprojects\graviti2\api-management-console-webui\node_modules\webpack-cli\lib\webpack-cli.js:1372:13) {
-  code: 'EADDRINUSE',
-  errno: -4091,
-  syscall: 'listen',
-  address: '::',
-  port: 8082
-}
+<--- Last few GCs --->
+
+[10760:000001CE53E5ABD0]   103627 ms: Scavenge 2010.1 (2068.3) -> 2004.7 (2068.3) MB, 8.3 / 0.0 ms  (average mu = 0.375, current mu = 0.443) allocation failure
+[10760:000001CE53E5ABD0]   103674 ms: Scavenge 2011.4 (2068.3) -> 2005.4 (2084.3) MB, 23.1 / 0.0 ms  (average mu = 0.375, current mu = 0.443) allocation failure
+[10760:000001CE53E5ABD0]   105266 ms: Mark-sweep 2021.0 (2084.3) -> 2002.0 (2085.3) MB, 1543.5 / 0.1 ms  (average mu = 0.284, current mu 
+= 0.168) task scavenge might not succeed
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+ 1: 00007FF75A07FD2F v8::internal::CodeObjectRegistry::~CodeObjectRegistry+112495
+ 2: 00007FF75A00EEF6 v8::internal::wasm::WasmCode::safepoint_table_offset+65526
+ 3: 00007FF75A00FDAD node::OnFatalError+301
+ 4: 00007FF75A95663E v8::Isolate::ReportExternalAllocationLimitReached+94
+ 5: 00007FF75A940F7D v8::SharedArrayBuffer::Externalize+781
+ 6: 00007FF75A7C15AC v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1468
+ 7: 00007FF75A7CE239 v8::internal::Heap::PublishPendingAllocations+1161
+ 8: 00007FF75A7CB1EA v8::internal::Heap::PageFlagsAreConsistent+2842
+ 9: 00007FF75A7BE05F v8::internal::Heap::CollectGarbage+1983
+10: 00007FF75A7BBB36 v8::internal::Heap::AllocateExternalBackingStore+86
+11: 00007FF75A6D739D v8::internal::BackingStore::Allocate+205
+12: 00007FF75A679F44 v8::internal::JSTypedArray::GetBuffer+244
+13: 00007FF75A937CDF v8::ArrayBufferView::Buffer+271
+14: 00007FF759F3BDD2 RSA_meth_get_flags+84610
+15: 00007FF75A911580 v8::internal::Builtins::code_handle+319840
+16: 00007FF75A910B99 v8::internal::Builtins::code_handle+317305
+17: 00007FF75A910E8C v8::internal::Builtins::code_handle+318060
+18: 00007FF75A910CD3 v8::internal::Builtins::code_handle+317619
+19: 00007FF75A9E3441 v8::internal::SetupIsolateDelegate::SetupHeap+491793
+20: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+21: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+22: 00007FF75A9738AF v8::internal::SetupIsolateDelegate::SetupHeap+34175
+23: 00007FF75AA6FDE6 v8::internal::SetupIsolateDelegate::SetupHeap+1067702
+24: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+25: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+26: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+27: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+28: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+29: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+30: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+31: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+32: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+33: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+34: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+35: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+36: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+37: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+38: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+39: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+40: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+41: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+42: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+43: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+44: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+45: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+46: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+47: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+48: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+49: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+50: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+51: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+52: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+53: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+54: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+55: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+56: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+57: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+58: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+59: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+60: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+61: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+62: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+63: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+64: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+65: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+66: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+67: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+68: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+69: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+70: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+71: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+72: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+73: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+74: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+75: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+76: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+77: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+78: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+79: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+80: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+81: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+82: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+83: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+84: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+85: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+86: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+87: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+88: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+89: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+90: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+91: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+92: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+93: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+94: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+95: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438
+96: 00007FF75A9764AE v8::internal::SetupIsolateDelegate::SetupHeap+45438

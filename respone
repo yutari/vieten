@@ -5,3 +5,14 @@
 public information = `By default, the selection of a flow is based on the operator defined in the flow itself.
   <br/>This operator allows either to select a flow when the path matches exactly, or when the start of the path matches.
   <br/>The "Best match" option allows you to select the flow from the path that is closest.`;
+
+
+{
+  "information": "By default, the selection of a flow is based on the operator defined in the flow itself.<br/>This operator allows either to select a flow when the path matches exactly, or when the start of the path matches.<br/>The \"Best match\" option allows you to select the flow from the path that is closest."
+}
+
+
+
+{
+  "information": "Theo mặc định, việc lựa chọn luồng dựa trên toán tử được định nghĩa trong chính luồng.<br/>Toán tử này cho phép chọn một luồng khi đường dẫn khớp chính xác, hoặc khi phần đầu của đường dẫn khớp.<br/>Tùy chọn \"Khớp tốt nhất\" cho phép bạn chọn luồng từ đường dẫn gần nhất."
+}

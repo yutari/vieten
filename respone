@@ -1,1 +1,7 @@
-node --max-old-space-size=4096 node_modules/webpack/bin/webpack.js serve --config ./conf/webpack.conf.js --progress --hot --port=8082
+<blockquote class="policy-studio-api-config__information__blockquote" [innerHtml]="this.information"></blockquote>
+
+
+
+public information = `By default, the selection of a flow is based on the operator defined in the flow itself.
+  <br/>This operator allows either to select a flow when the path matches exactly, or when the start of the path matches.
+  <br/>The "Best match" option allows you to select the flow from the path that is closest.`;
